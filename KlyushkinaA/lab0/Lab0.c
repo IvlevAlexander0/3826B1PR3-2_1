@@ -12,6 +12,7 @@ void main() {
     double d = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
     if (d == 0 && r1 == r2) {
         printf("coincide\n");
+    }
     else if (d > r1 + r2) {
         printf("dont intersect\n");
     }
