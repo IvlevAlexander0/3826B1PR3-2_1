@@ -10,22 +10,21 @@ void main() {
     printf("enter x1, y1, x2, y2, r1, r2 \n");
     scanf_s("%lf %lf %lf %lf %lf %lf", &x1, &y1, &x2, &y2, &r1, &r2);
     double d = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-    if (d > r1 + r2) {
+    if (d == 0 && r1 == r2) {
+        printf("coincide\n");
+    else if (d > r1 + r2) {
         printf("dont intersect\n");
     }
-    else if (d < abs(r1 - r2)) {
+    else if (d < fabs(r1 - r2)) {
         printf("dont intersect\n");
     }
     else if (d == r1 + r2) {
         printf("tangent\n");
     }
-    else if (d == abs(r1 - r2)) {
+    else if (d == fabs(r1 - r2)) {
         printf("tangent\n");
     }
-    else if ((abs(r1 - r2) < d) && (d < (r1 + r2))) {
+    else if ((fabs(r1 - r2) < d) && (d < (r1 + r2))) {
         printf("intersect\n");
-    }
-    else if (d == 0 && r1 == r2) {
-        printf("coincide\n");
     }
 }
