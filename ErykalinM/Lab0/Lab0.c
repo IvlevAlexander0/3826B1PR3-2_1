@@ -25,30 +25,22 @@ void main()
     double d;
     d = sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
     const double eps = 1e-9;
-    if ((r1 <= eps) || (r2 <= eps)) {
+    if ((r1 <= 0) || (r2 <= 0)) {
         printf("The radius cannot be negative");
     }
-    else {
-        if ((r1 == r2) && (x1 == x2) && (y1 == y2)) {
+    else if (fabs(r1 - r2) < eps && fabs(x1 - x2) < eps && fabs(y1 - y2) < eps) {
             printf("the circles coincide");
         }
-        else {
-            if ((d == (r1 + r2)) || (d == fabs(r1 - r2))) {
+        else if (fabs(d - (r1 + r2)) < eps || fabs(d - fabs(r1 - r2)) < eps) {
                 printf("concern");
             }
-            else {
-                if ((d > (r1 + r2)) || (d < fabs(r1 - r2))) {
+            else if ((d > (r1 + r2)) || (d < fabs(r1 - r2))) {
                     printf("do not overlap");
                 }
-                else {
-                    if (((r1 - r2) < d) && (d < (r1 + r2))) {
+                else if (((r1 - r2) < d) && (d < (r1 + r2))) {
                         printf("intersect");
                     }
                     else {
                         printf("Error");
                     }
-                }
-            }
-        }
-    }
 }
