@@ -27,7 +27,7 @@ void main()
 	dy = abs(y1 - y2);
 
 	int moveKing = 0;
-	int moveQuene = 0;
+	int moveQueen = 0;
 	int moveRook = 0;
 	int moveBishop = 0;
 	int moveKnight = 0;
@@ -46,7 +46,7 @@ void main()
 	if (dx <= 1 && dy <= 1) moveKing = 1;
 	if (x1 == x2 || y1 == y2) moveRook = 1;
 	if (dx == dy) moveBishop = 1;
-	if (moveRook == 1 || moveBishop == 1) moveQuene = 1;
+	if (moveRook == 1 || moveBishop == 1) moveQueen = 1;
 	if ((dx == 2 && dy == 1) || (dx == 1 && dy == 2)) moveKnight = 1;
 
 	int moveFigure = 0;
@@ -54,7 +54,7 @@ void main()
 	switch (figure)
 	{
 	case 1: moveFigure = moveKing; break;
-	case 2: moveFigure = moveQuene; break;
+	case 2: moveFigure = moveQueen; break;
 	case 3: moveFigure = moveRook; break;
 	case 4: moveFigure = moveBishop; break;
 	case 5: moveFigure = moveKnight; break;
@@ -68,36 +68,36 @@ void main()
 		printf("Figure can move from K1 to K2 in one move\n");
 	}
 	else {
-		printf("This figure cant move like that but the others figures can\n");
+		printf("This figure cant move like that\n");
 	}
 
-	int figire_can = 0;
+	int figure_can = 0;
 	if (moveKing == 1 && figure != 1)
 	{
 		printf("King\n");
-		figire_can = 1;
+		figure_can = 1;
 	}
-	if (moveQuene == 1 && figure != 2)
+	if (moveQueen == 1 && figure != 2)
 	{
-		printf("Quene\n");
-		figire_can = 1;
+		printf("Queen\n");
+		figure_can = 1;
 	}
 	if (moveRook == 1 && figure != 3)
 	{
 		printf("Rook\n");
-		figire_can = 1;
+		figure_can = 1;
 	}
 	if (moveBishop == 1 && figure != 4)
 	{
 		printf("Bishop\n");
-		figire_can = 1;
+		figure_can = 1;
 	}
 	if (moveKnight == 1 && figure != 5)
 	{
 		printf("Knight\n");
-		figire_can = 1;
+		figure_can = 1;
 	}
-	if (figire_can == 0)
+	if (figure_can == 0 && moveFigure == 0)
 	{
 		printf("Nobody can do it in one move\n");
 	}
