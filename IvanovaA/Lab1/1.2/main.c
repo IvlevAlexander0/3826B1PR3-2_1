@@ -69,37 +69,41 @@ void main()
 	}
 	else {
 		printf("This figure cant move like that\n");
+
+		printf("Other figures that can do it\n");
+
+		int figure_can = 0;
+		if (moveKing == 1 && figure != 1)
+		{
+			printf("King\n");
+			figure_can = 1;
+		}
+		if (moveQueen == 1 && figure != 2)
+		{
+			printf("Queen\n");
+			figure_can = 1;
+		}
+		if (moveRook == 1 && figure != 3)
+		{
+			printf("Rook\n");
+			figure_can = 1;
+		}
+		if (moveBishop == 1 && figure != 4)
+		{
+			printf("Bishop\n");
+			figure_can = 1;
+		}
+		if (moveKnight == 1 && figure != 5)
+		{
+			printf("Knight\n");
+			figure_can = 1;
+		}
+		if (figure_can == 0)
+		{
+			printf("Nobody can do it in one move\n");
+		}
 	}
 
-	int figure_can = 0;
-	if (moveKing == 1 && figure != 1)
-	{
-		printf("King\n");
-		figure_can = 1;
-	}
-	if (moveQueen == 1 && figure != 2)
-	{
-		printf("Queen\n");
-		figure_can = 1;
-	}
-	if (moveRook == 1 && figure != 3)
-	{
-		printf("Rook\n");
-		figure_can = 1;
-	}
-	if (moveBishop == 1 && figure != 4)
-	{
-		printf("Bishop\n");
-		figure_can = 1;
-	}
-	if (moveKnight == 1 && figure != 5)
-	{
-		printf("Knight\n");
-		figure_can = 1;
-	}
-	if (figure_can == 0 && moveFigure == 0)
-	{
-		printf("Nobody can do it in one move\n");
-	}
+	
 
 }
