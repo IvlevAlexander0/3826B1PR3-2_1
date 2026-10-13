@@ -1,6 +1,6 @@
 ﻿#include <stdio.h>
 
-void main() {
+int main() {
 	double h, w, m1;
 	printf("enter the height and width of the back panel (sm)\n");
 	printf("height:");
@@ -29,7 +29,8 @@ void main() {
 
 	m3 = (w * d * 1.5) * 2 * 0.65;
 	m4 = h * w * 0.55;
-	m5 = (w - (2 * 1.5)) * d * 0.5 * 0.65 * ((int)h / 40);
+	m5 = (w - (2 * 1.5)) * d * 0.5 * 0.65 * ((int)(h - 3)/ 40);
 	printf("\nweight: %.2lf kg\n", m = (m1 + m2 + m3 + m4 + m5) / 1000);
+
 	return 0;
 }
