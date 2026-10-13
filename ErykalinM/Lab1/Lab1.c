@@ -4,9 +4,9 @@
 void main()
 {
     double h, d, w;
-    int Ppa = 550;
-    int Pfi = 850;
-    int Pwo = 600;
+    const double Ppa = 550;
+    const double Pfi = 850;
+    const double Pwo = 600;
     printf("Enter the wardrobe height in centimeters (between 180 and 220). \n");
     scanf("%lf", &h);
     printf("Enter the wardrobe depth in centimeters (from 50 to 90). \n");
@@ -17,7 +17,7 @@ void main()
         printf("Error: The parameters exceed the established limits.");
     }
     else {
-        int Ns = h / 40;
+        int Ns = (h - (1.5 + 1.5)) / 40;
         double bp = h * w * 0.5;
         double sp = 2 * h * d * 1.5;
         double lids = 2 * d * w * 1.5;
