@@ -5,12 +5,14 @@ int main()
 	double dsp = 600.0;
 	double dvp = 850.0;
 	double tree = 400.0;
-	printf_s("enter the height, width, and depth");
-	if (scanf_s("%lf %lf %lf", &h, &d, &w) != 3) {
-		printf_s("error\n");
+	printf_s("enter the height, width, and depth\n");
+	if (scanf_s("%lf %lf %lf", &h, &w, &d) != 3) {
+		printf_s("error: incorrect input\n");
+		return -1;
 	}
-	if ((h >= 180 && h <= 220) || (w >= 80 && w <= 120) || (d >= 50 && d <= 90)) {
+	if ((h < 180 || h > 220 || w < 80 || w > 120 || d < 50 || d > 90)) {
 		printf_s("error\n");
+		return -1;
 	}
 	double h_m = h / 100.0;
 	double w_m = w / 100.0;
@@ -25,13 +27,16 @@ int main()
 	if (num < 0) {
 		num = 0;
 	}
-	double shelf_m = (w - 2 * 0.15) / 100.0; //5. shelves
+
+	double shelf_m = w - 2 * 0.15; //5. shelves
 	double shelf_d = d_m;
 	double m_shelf = 0;
+
 	if (num > 0) {
 		m_shelf = dsp * (shelf_m * shelf_d * 0.005) * num;
 	}
 	double M = m_back + m_side + m_top + m_door + m_shelf;
 
 	printf_s("the mass of tne cabinet is:%.21f kg\n", M);
+	return 0;
 }
