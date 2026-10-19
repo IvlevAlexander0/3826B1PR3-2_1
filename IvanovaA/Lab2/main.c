@@ -9,7 +9,7 @@ int main()
 	int mode, x, i;
 	i = 0;
 	srand(time(NULL));
-	
+
 	printf("Choose mode\n");
 	printf("1 - the programm guess\n");
 	printf("2 - the human guess\n");
@@ -18,7 +18,7 @@ int main()
 	if (mode == 1)
 	{
 		int a = 0;
-		x = 1 + rand() % 1000;	
+		x = 1 + rand() % 1000;
 
 		while (x != a)
 		{
@@ -40,7 +40,7 @@ int main()
 				printf("x = %d, a = %d, i = %d", x, a, i);
 			}
 		}
-			
+
 	}
 	else if (mode == 2)
 	{
