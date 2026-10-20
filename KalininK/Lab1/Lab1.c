@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <math.h>
-void main()
+int main()
 {
-	printf("Enter your figure (pawn, king, queen, bishop, knight, rook) with numbers 1-6, position vertical A-H, horisontal 1-8 \nand square you want to move to the same way\n");
+	printf("Enter your figure (king, queen, bishop, knight, rook) with numbers 1-5, position vertical A-H, horisontal 1-8 \nand square you want to move to the same way\n");
 	char symb, sym1;
 	int numb, num1, fig;
 	scanf_s("%d", &fig);
-	if (fig > 6 || fig < 1)
+	if (fig > 5 || fig < 1)
 	{
 		printf("Invalid figure");
 		return 0;
@@ -30,23 +30,10 @@ void main()
 		printf("You can't move to the same position you are on");
 		return 0;
 	}
-	int p=0, ki=0, q=0, b=0, kn=0, r=0;
-	if (symn1-symnum<2 && num1-numb==0)
-	{
-		p = 1;
-		if (fig == p)
-		{
-			printf("Yes you can make this move");
-			return 0;
-		}
-		else
-		{
-			p = 8;
-		}
-	}
+	int ki=0, q=0, b=0, kn=0, r=0;
 	if (abs(symn1 - symnum) < 2 && abs(num1 - numb) < 2)
 	{
-		ki = 2;
+		ki = 1;
 		if (fig == ki)
 		{
 			printf("Yes you can make this move");
@@ -59,7 +46,7 @@ void main()
 	}
 	if (symn1 - symnum == 0 || num1 - numb == 0 ||(abs(symn1 - symnum) < 2 && abs(num1 - numb) < 2)|| (abs(symn1 - symnum) == abs(num1 - numb)))
 	{
-		q = 3;
+		q = 2;
 		if (fig == q)
 		{
 			printf("Yes you can make this move");
@@ -72,7 +59,7 @@ void main()
 	}
 	if (abs(symn1 - symnum) == abs(num1 - numb))
 	{
-		b = 4;
+		b = 3;
 		if (fig == b)
 		{
 			printf("Yes you can make this move");
@@ -85,7 +72,7 @@ void main()
 	}
 	if (abs(symn1 - symnum) ==2 && abs(num1 - numb) == 1 || abs(symn1 - symnum) == 1 && abs(num1 - numb) == 2)
 	{
-		kn = 5;
+		kn = 4;
 		if (fig == kn)
 		{
 			printf("Yes you can make this move");
@@ -98,7 +85,7 @@ void main()
 	}
 	if (symn1 - symnum == 0 || num1 - numb == 0)
 	{
-		r = 6;
+		r = 5;
 		if (fig == r)
 		{
 			printf("Yes you can make this move");
@@ -109,11 +96,9 @@ void main()
 			r = 8;
 		}
 	}
-	else if (p+ki+q+b+kn+r>0)
+	else if (ki+q+b+kn+r>0)
 	{
 		printf("No you can't make this move but:\n");
-		if (p == 8)
-			printf("pawn\n");
 		if (ki == 8)
 			printf("king\n");
 		if (q == 8)
