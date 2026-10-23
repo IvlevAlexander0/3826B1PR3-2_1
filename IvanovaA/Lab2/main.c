@@ -13,7 +13,11 @@ int main()
 	printf("Choose mode\n");
 	printf("1 - the programm guess\n");
 	printf("2 - the human guess\n");
-	scanf("%d", &mode);
+	if (scanf("%d", &mode) != 1)
+	{
+		printf("Invalid input\n");
+		return 1;
+	}
 
 	if (mode == 1)
 	{
@@ -23,7 +27,18 @@ int main()
 		while (x != a)
 		{
 			printf("Enter the estimated number\n");
-			scanf("%d", &a);
+			if (scanf("%d", &a) != 1)
+			{
+				printf("Invalid input\n");
+				return 1;
+			}
+			if (a < 1 || a > 1000)
+			{
+				printf("Number must be from 1 to 1000\n");
+				a = 0;
+				continue;
+			}
+
 			i++;
 
 			if (x < a)
@@ -55,6 +70,11 @@ int main()
 
 			printf("Is this the number %d? (If the chosen number is smaller <; the chosen number is greater >; guessed correctly =): ", a);
 			scanf(" %c", &c);
+			if (scanf(" %c", &c) != 1)
+			{
+				printf("Invalid input\n");
+				return 1;
+			}
 
 			if (c == '=')
 			{
