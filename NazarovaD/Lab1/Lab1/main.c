@@ -28,7 +28,7 @@ int main()
 		num = 0;
 	}
 
-	double shelf_m = w - 2 * 0.15; //5. shelves
+	double shelf_m = w - 2 * 0.015; //5. shelves
 	double shelf_d = d_m;
 	double m_shelf = 0;
 
