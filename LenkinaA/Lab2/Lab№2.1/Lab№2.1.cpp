@@ -11,7 +11,10 @@ void user() {
 
 	do {
 		printf("Try to guess. Enter your number.\n");
-		scanf("%d", &user_num);
+		if (scanf("%d", &user_num) != 1) {
+			printf("Enter a valid number\n");
+			return;
+		}
 		n++;
 		if (user_num < num) {
 			printf("The guessed number is greater.\n");
@@ -35,7 +38,11 @@ void computer() {
 		int x = (left + right) / 2;
 		printf("If this the number %d?\n",x);
 		printf("If chosen number is smaller <;\n the chosen number is greater >;\n guessed correctle = :");
-		scanf(" %c", &c);
+		
+		if (scanf("%c", &c) != 1) {
+			printf("Error\n");
+			return;
+		}
 		n++;
 		if (c == '=') {
 			
@@ -67,7 +74,12 @@ int main() {
 	printf("Select the game mode\n");
 	printf("0-You guess the number.\n");
 	printf("1-The computer guesses your number.\n");
-	scanf("%d", &choice);
+	
+	if (scanf("%d", &choice) != 1) {
+		printf("Error\n");
+		return 1;
+	}
+	
 
 	switch (choice) {
 	case 0: user();
