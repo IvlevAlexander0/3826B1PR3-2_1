@@ -1,0 +1,11 @@
+﻿  main.c
+C:\Users\diana\3826B1PR3-2_1\NazarovaD\Lab2\main.c(13,8): warning C4244: функция: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\diana\3826B1PR3-2_1\NazarovaD\Lab2\main.c(56,12): warning C4473: "scanf_s": передано недостаточно аргументов для строки формата
+      C:\Users\diana\3826B1PR3-2_1\NazarovaD\Lab2\main.c(56,12):
+      заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 1
+      C:\Users\diana\3826B1PR3-2_1\NazarovaD\Lab2\main.c(56,12):
+      отсутствующий вариативный аргумент "2" требуется для строки форматирования "%c"
+      C:\Users\diana\3826B1PR3-2_1\NazarovaD\Lab2\main.c(56,12):
+      этот аргумент используется в качестве размера буфера
+  
+  Lab2.vcxproj -> C:\Users\diana\3826B1PR3-2_1\NazarovaD\Lab2\x64\Debug\Lab2.exe
