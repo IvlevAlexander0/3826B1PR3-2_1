@@ -4,7 +4,6 @@
 #include <time.h>
 
 void num_gues() {
-    srand((unsigned int)time(NULL));
     int rnum = rand() % 1000 + 1;
     int unum = 0;
     int a = 1;
@@ -28,8 +27,10 @@ void num_gues() {
     printf("Your attempts: %d", a);
 }
 
-void num_set(){
+void num_set() {
     int unum;
+    int left = 1;
+    int right = 1000;
     int cnum = 500;
     int a = 1;
     char ch = '0';
@@ -42,7 +43,7 @@ void num_set(){
     while (ch != '=') {
         printf("I think the number you have in mind is %d", cnum);
         printf(" is this correct? (Enter > if the number is greater, < if the number is smaller, and = if the program guessed correctly) \n");
-        while (scanf(" %c", &ch) != 1 || ch != '>' && ch != '<' && ch != '=') {
+        while (scanf(" %c", &ch) != 1 || (ch != '>' && ch != '<' && ch != '=')) {
             int c;
             while ((c = getchar()) != '\n' && c != EOF) {};
             printf("Enter > if the number is greater, < if the number is smaller, and = if the program guessed correctly \n");
@@ -52,7 +53,8 @@ void num_set(){
                 printf("That is not correct; please enter it correctly. \n");
             }
             else {
-                cnum = cnum - (cnum / 2);
+                left = cnum - 1;
+                cnum = left + (right - left) / 2;
                 a = a + 1;
             }
         }
@@ -61,7 +63,8 @@ void num_set(){
                 printf("That is not correct; please enter it correctly. \n");
             }
             else {
-                cnum = cnum + (cnum / 2);
+                left = cnum + 1;
+                cnum = left + (right - left) / 2;
                 a = a + 1;
             }
         }
@@ -77,6 +80,7 @@ void num_set(){
 
 void main()
 {
+    srand((unsigned int)time(NULL));
     int mode;
     printf("Select a mode: 1: guess the number. 2: choose a number. \n");
     while (scanf("%d", &mode) != 1 || mode <= 0 || mode > 2) {
