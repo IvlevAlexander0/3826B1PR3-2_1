@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-void Md1()
+int Md1()
 {
-	int a = rand();
-	int n = (rand()*rand() % 1000) + 1;
+	int n = (rand() % 1000) + 1;
 	int guess;
-	int c=1;
+	int c = 1;
 	printf("Programm generated random number in 1-1000 window, enter your guess:\n");
 	scanf_s("%d", &guess);
 	while (guess != n)
@@ -22,22 +21,23 @@ void Md1()
 		else if (guess > n)
 		{
 			printf("Generated number is smaller than this\n");
+			c = c + 1;
 		}
 		else if (guess < n)
 		{
 			printf("Generated number is bigger than this\n");
+			c = c + 1;
 		}
 		scanf_s("%d", &guess);
-		c = c + 1;
-	
+
 	}
 	printf("You guessed the number!\nAmount of guesses = %d", c);
 }
-void Md2()
+int Md2()
 {
 	int ver = 1000, niz = 1;
 	char guess;
-	int c=1,  n = 1+rand()%1000;
+	int c = 1, n = 1 + rand() % 1000;
 	printf("Pick your number in 1-1000 window, programm will try to guess it\nType '<' if your number is is smaller\nType '>' if your number is is bigger\nType '=' if programm guessed right\nGuessing number:\n");
 	printf("You picked number: %d?\n", n);
 	scanf_s(" %c", &guess);
@@ -45,7 +45,7 @@ void Md2()
 	{
 		if (guess == '>')
 		{
-			niz = n+1;
+			niz = n + 1;
 			if (ver > 1000 || niz < 1 || ver - niz < 0)
 			{
 				printf("You picked number not from the window or not natural number");
@@ -56,7 +56,7 @@ void Md2()
 		}
 		else if (guess == '<')
 		{
-			ver = n-1;
+			ver = n - 1;
 			if (ver > 1000 || niz < 1 || ver - niz < 0)
 			{
 				printf("You picked number not from the window or not natural number");
@@ -90,10 +90,23 @@ int main()
 	{
 		Md2();
 	}
-	else
+	while (choice != 1 && choice != 2)
 	{
-		printf("Invalid mode");
-		return 0;
+		if (choice == 1)
+		{
+			Md1();
+			break;
+		}
+		else if (choice == 2)
+		{
+			Md2();
+			break;
+		}
+		else
+		{
+			printf("Invalid mode, choose again\n");
+
+		}
 	}
 	return 0;
 }
