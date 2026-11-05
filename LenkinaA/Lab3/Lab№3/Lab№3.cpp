@@ -5,13 +5,18 @@
 #include <stdlib.h>
 #include<time.h>
 #include<string.h>
+#include<ctype.h>
 
 int main() {
 	srand(time(NULL));
 	int n;
 	do {
 		printf("The length of the number(from 2 to 5)\n");
-		scanf("%d", &n);
+		if (scanf("%d", &n) != 1) {
+			printf("Error");
+			while (getchar() != '\n');
+			n = 0;
+		}
 	} while (n < 2 || n>5);
 	char secret[6];
 	int used[10] = { 0 };
@@ -39,7 +44,8 @@ int main() {
 
 	while (1) {
 		printf("Your option: \n");
-		scanf("%5s", guess, (unsigned int)sizeof(guess));
+		scanf("%5s", guess);
+		while (getchar() != '\n');
 		if ((int)strlen(guess) != n) {
 			printf("Incorrect length. Please try again\n");
 			continue;
@@ -48,6 +54,20 @@ int main() {
 			printf("0 cannot be the first\n");
 			continue;
 		}
+		int digit = 1;
+		for (int i = 0;i < n;i++) {
+			if (!isdigit(guess[i])) {
+				digit = 0;
+				break;
+			}
+		}
+		if (!digit) {
+			printf("Error");
+			continue;
+		}
+		
+
+
 		attempts++;
 
 		int bulls = 0, cows = 0;
@@ -71,4 +91,4 @@ int main() {
 		}
 	}
 	return 0;
-}
+} 
