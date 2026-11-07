@@ -53,7 +53,7 @@ void num_set() {
                 printf("That is not correct; please enter it correctly. \n");
             }
             else {
-                left = cnum - 1;
+                right = cnum - 1;
                 cnum = left + (right - left) / 2;
                 a = a + 1;
             }
