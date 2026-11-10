@@ -1,7 +1,60 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
+int read_guess(int n, int guess[])
+{
+    int i, c;
+    int used[10] = { 0 };
+
+    c = getchar();
+    while (c == ' ' || c == '\n') {
+        if (c == EOF) return 0;
+        c = getchar();
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        if (c < '0' || c > '9')
+        {
+            while (c != '\n' && c != EOF)
+                c = getchar();
+            return 0;
+        }
+
+        int digit = c - '0';
+
+        if (i == 0 && digit == 0)
+        {
+            while (c != '\n' && c != EOF)
+                c = getchar();
+            return 0;
+        }
+
+        if (used[digit])
+        {
+            while (c != '\n' && c != EOF)
+                c = getchar();
+            return 0;
+        }
+
+        used[digit] = 1;
+        guess[i] = digit;
+        c = getchar();
+    }
+
+    if (c != '\n' && c != ' ' && c != EOF)
+    {
+        while (c != '\n' && c != EOF)
+            c = getchar();
+        return 0;
+    }
+
+    while (c != '\n' && c != EOF)
+        c = getchar();
+
+    return 1;
+}
 
 int main()
 {
@@ -41,8 +94,14 @@ int main()
         {
             r = rand() % 10;
             ok = 1;
-            for (j = 0; j < i; j++)
-                if (secret[j] == r) ok = 0;
+            if (i == 0 && r == 0) {
+                ok = 0;
+            }
+            for (j = 0; j < i; j++) {
+                if (secret[j] == r) {
+                    ok = 0;
+                }
+            }
         } while (!ok);
         secret[i] = r;
     }
@@ -52,35 +111,9 @@ int main()
     {
         printf("Your guess: ");
 
-        while ((c = getchar()) == ' ' || c == '\n') {
-            if (c == EOF) break;
-        }
-
-        int count = 0;
-        int is_valid = 1;
-
-        while (c != '\n' && c != ' ' && c != EOF)
+        if (!read_guess(n, guess))
         {
-            if (count >= n || c < '0' || c > '9') {
-                is_valid = 0;
-            }
-            else {
-                guess[count] = c - '0';
-                count++;
-            }
-            c = getchar();
-        }
-
-        if (count != n) {
-            is_valid = 0;
-        }
-
-        while (c != '\n' && c != EOF) {
-            c = getchar();
-        }
-
-        if (!is_valid) {
-            printf("Bad input, please enter exactly %d digits.\n", n);
+            printf("Bad input! Enter %d unique digits (no leading zero).\n", n);
             continue;
         }
 
@@ -88,12 +121,16 @@ int main()
         cows = 0;
         for (i = 0; i < n; i++)
         {
-            if (guess[i] == secret[i]) {
+            if (guess[i] == secret[i])
+            {
                 bulls++;
             }
-            else {
-                for (j = 0; j < n; j++) {
-                    if (i != j && guess[i] == secret[j]) {
+            else
+            {
+                for (j = 0; j < n; j++)
+                {
+                    if (i != j && guess[i] == secret[j])
+                    {
                         cows++;
                     }
                 }
