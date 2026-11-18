@@ -15,14 +15,22 @@ int main() {
 	printf_s("1 - the computer is thinking of a number\n");
 	printf_s("2 - еhe user is thinking of a number\n");
 	printf_s("choose a game mode, 1 or 2\n");
-	scanf_s("%d", &mode);
+	if (scanf_s("%d", &mode) != 1) {
+		return 1;
+	}
+
 	if (mode == 1) {
 		number = rand() % 1000 + 1;
 		printf_s("a number from 1 to 1000 has been guessed\n");
+
 		while (1) {
 			printf_s("enter your guess\n");
-			scanf_s("%d", &guess);
+			if (scanf_s("%d", &guess) != 1) {
+				printf_s("input error\n");
+				break;
+			}
 			attempts++;
+
 			if (guess < number) {
 				printf_s("the guessed number is greater\n");
 			}
@@ -38,8 +46,7 @@ int main() {
 	}
 	else if (mode == 2) {
 		printf_s("guess a number from 1 to 1000\n");
-		scanf_s("%d", &number);
-		if (number < 1 || number > 1000) {
+		if (scanf_s("%d", &number) != 1 || number < 1 || number > 1000) {
 			printf_s("mistake\n");
 			return 0;
 		}
@@ -53,23 +60,26 @@ int main() {
 
 			printf_s("my guess: %d\n", guess);
 			printf_s("your answer: \n");
-			scanf_s(" %c", &answer);
-
-			attempts++;
+			if (scanf_s(" %c", &answer, 1) != 1) {
+				printf_s("input error\n");
+				break;
+			}
 
 			if (answer == '=') {
+				attempts++;
 				printf_s("i guessed right!\n");
 				break;
 			}
 			else if (answer == '>') {
+				attempts++;
 				min = guess + 1;
 			}
 			else if (answer == '<') {
+				attempts++;
 				max = guess - 1;
 			}
 			else {
 				printf_s("invalid character. Enter >, < or =\n");
-				attempts--;
 			}
 			if (min > max) {
 				printf_s("the answers contradict each other\n");
