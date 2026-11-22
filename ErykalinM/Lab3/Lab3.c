@@ -146,4 +146,5 @@ int main() {
         }
     }
     printf("Congratulations, you guessed the number! \n");
+    return 0;
 }
