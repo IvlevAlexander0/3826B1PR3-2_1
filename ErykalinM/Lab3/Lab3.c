@@ -81,7 +81,7 @@ int gen(int num) {
     while (n != 0) {
         int d = rand() % 10;
         int b = 1;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < p; i++) {
             if (d == arr[i]) {
                 b = 0;
             }
